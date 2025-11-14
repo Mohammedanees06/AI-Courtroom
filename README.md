@@ -295,11 +295,14 @@ Centralizes auth, parties/case data, chat messages, verdict state, and documents
 
 ## Author
 
-Mohammed Anees  
-Full-Stack Developer (MERN & AI)
+Mohammed Anees
+Full-Stack Developer (MERN & AI) 💻
 
-Portfolio: https://mohammedanees.netlify.app  
-LinkedIn: https://www.linkedin.com/in/mohammedaneesdev  
-GitHub: https://github.com/Mohammedanees06  
-Email: Mohammedanees0606@gmail.com
+🌐 Portfolio: https://mohammedanees.netlify.app
+
+🔗 LinkedIn: https://www.linkedin.com/in/mohammedaneesdev
+
+🧰 GitHub: https://github.com/Mohammedanees06
+
+✉️ Email: <a href="mailto:Mohammedanees0606@gmail.com">Mohammedanees0606@gmail.com</a>
 
