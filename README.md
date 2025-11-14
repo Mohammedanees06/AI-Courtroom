@@ -301,5 +301,5 @@ Full-Stack Developer (MERN & AI)
 Portfolio: https://mohammedanees.netlify.app  
 LinkedIn: https://www.linkedin.com/in/mohammedaneesdev  
 GitHub: https://github.com/Mohammedanees06  
-Email: Mohammedanees0606[at]gmail[dot]com
+Email: Mohammedanees0606@gmail.com
 
