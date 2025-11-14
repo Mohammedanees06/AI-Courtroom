@@ -64,6 +64,9 @@ The goal is to simulate a courtroom environment with clarity and discipline — 
 - Virtualized rendering for heavy chat and document lists
 
 ***
+#  Screenshots (Click to Expand)
+<details> <summary><b>Show Screenshots</b></summary> <br> <img width="1621" height="903" alt="Screenshot 2025-11-14 153417" src="https://github.com/user-attachments/assets/7a8b1530-2780-4c4e-baf7-8e4e5f3bde5a" /> <img width="1677" height="907" alt="Screenshot 2025-11-14 153456" src="https://github.com/user-attachments/assets/8095097e-646d-4da4-9e05-cd6e1aa0992b" /> <img width="1702" height="875" alt="Screenshot 2025-11-14 153509" src="https://github.com/user-attachments/assets/dfca33d3-6287-43a9-9cd7-0a5732c30f0f" /> <img width="1640" height="886" alt="Screenshot 2025-11-14 153526" src="https://github.com/user-attachments/assets/a9017215-4f05-402b-aef0-c6907665c7aa" /> <img width="1909" height="908" alt="Screenshot 2025-11-14 153619" src="https://github.com/user-attachments/assets/428593cf-39f8-4147-9446-690aa00c42a3" /> <img width="1687" height="880" alt="Screenshot 2025-11-14 153536" src="https://github.com/user-attachments/assets/1579703d-a067-4d13-b0e3-4c33dbb1bad3" /> </details>
+
 
 # Tech Stack
 
