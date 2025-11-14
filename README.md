@@ -6,7 +6,7 @@ The experience is intentionally simple: one user creates a case, receives a Case
 
 ### 🎥 Project Walkthrough (Video)
 
-I have created a short <5 minute video showcasing:
+I have created a short 5 minute video showcasing:
 
 - Complete implementation overview
 - Folder structure
