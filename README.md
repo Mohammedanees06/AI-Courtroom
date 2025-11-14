@@ -1,26 +1,23 @@
-***
-
 # AI Courtroom – MERN Based Legal Argument Simulator
 
 A real-time courtroom simulation where two parties join using a Case ID, submit structured arguments round-by-round, upload supporting documents, and receive an AI-generated verdict powered by Gemini.
 
-The experience is intentionally simple: one user creates a case, receives a Case ID, and shares it with the second user - similar to joining a room in a Ludo game. Both participants sign in using their personal Google accounts. Once authenticated, the plaintiff creates a case, the defendant joins using the same Case ID, and together they begin presenting structured statements and arguments with real-time synchronization.
+The experience is intentionally simple: one user creates a case, receives a Case ID, and shares it with the second user—similar to joining a room in a Ludo game. Both participants sign in using their Google accounts, the plaintiff creates a case, the defendant joins using the same Case ID, and both present structured statements with real-time synchronization.
 
-To ensure the platform stays fast, stable, and scalable, the system uses:
+### 🎥 Project Walkthrough (Video)
 
-- Lazy loaded frontend routes
-- Pagination for large data sets
-- Virtualized rendering (react-virtuoso) for smooth performance
-- Redis caching for reduced database load
-- MongoDB Atlas for cloud scalability
-- Google OAuth + JWT for secure authentication
-- Gemini API for verdict generation
+I have created a short <5 minute video showcasing:
 
-The goal is to simulate a courtroom environment with clarity and discipline — without unnecessary UI noise.
+- Complete implementation overview
+- Folder structure
+- Code walkthrough
+- API flow explanation
+- Demo of the working project
 
-***
+📺 Watch the Video:  
+youtube(https://youtu.be/lQwDDlbNeH4)
 
-# Features
+## Features
 
 ### Case System
 
@@ -37,47 +34,53 @@ The goal is to simulate a courtroom environment with clarity and discipline — 
 
 ### Document Uploads
 
-- Each side can upload supporting documents
+- Each side can upload supporting documents (PDF, DOCX)
+- Server extracts text and stores metadata for AI analysis
 - Frontend uses virtualized lists for smooth browsing
-- Server extracts text (PDF/Docx) and stores metadata
 
 ### AI Judge
 
-- Both sides may request a verdict
+- Either side can request a verdict
 - Gemini API generates a structured summary and final judgment
-- Verdict is cached in Redis for improved performance on repeated requests
+- Verdicts are cached in Redis to reduce repeated API calls
 
 ### Authentication
 
 - Login via Email + Password or Google OAuth
-- JWT used for securing all protected API routes
+- JWT secures all protected API routes
+- Client uses the Google OAuth Client ID for sign-in
 
 ### Scalability & Performance
 
-- Redis caching for:
-  - Case data
-  - Messages
-  - Verdicts
-- MongoDB Atlas for horizontal scalability
-- Lazy-loaded React routes reduce bundle size
-- Paginated case lists
+- Redis caching for case data, messages, and verdicts
+- MongoDB Atlas for cloud scalability
+- Lazy-loaded React routes to reduce bundle size
+- Pagination for large lists
 - Virtualized rendering for heavy chat and document lists
 
-***
-#  Screenshots (Click to Expand)
-<details> <summary><b>Show Screenshots</b></summary> <br> <img width="1621" height="903" alt="Screenshot 2025-11-14 153417" src="https://github.com/user-attachments/assets/7a8b1530-2780-4c4e-baf7-8e4e5f3bde5a" /> <img width="1677" height="907" alt="Screenshot 2025-11-14 153456" src="https://github.com/user-attachments/assets/8095097e-646d-4da4-9e05-cd6e1aa0992b" /> <img width="1702" height="875" alt="Screenshot 2025-11-14 153509" src="https://github.com/user-attachments/assets/dfca33d3-6287-43a9-9cd7-0a5732c30f0f" /> <img width="1640" height="886" alt="Screenshot 2025-11-14 153526" src="https://github.com/user-attachments/assets/a9017215-4f05-402b-aef0-c6907665c7aa" /> <img width="1909" height="908" alt="Screenshot 2025-11-14 153619" src="https://github.com/user-attachments/assets/428593cf-39f8-4147-9446-690aa00c42a3" /> <img width="1687" height="880" alt="Screenshot 2025-11-14 153536" src="https://github.com/user-attachments/assets/1579703d-a067-4d13-b0e3-4c33dbb1bad3" /> </details>
+## Screenshots
 
+<details>
+  <summary><b>Show Screenshots</b></summary>
 
-# Tech Stack
+  <img width="1621" height="903" alt="Screenshot 2025-11-14 153417" src="https://github.com/user-attachments/assets/7a8b1530-2780-4c4e-baf7-8e4e5f3bde5a" />
+  <img width="1677" height="907" alt="Screenshot 2025-11-14 153456" src="https://github.com/user-attachments/assets/8095097e-646d-4da4-9e05-cd6e1aa0992b" />
+  <img width="1702" height="875" alt="Screenshot 2025-11-14 153509" src="https://github.com/user-attachments/assets/dfca33d3-6287-43a9-9cd7-0a5732c30f0f" />
+  <img width="1640" height="886" alt="Screenshot 2025-11-14 153526" src="https://github.com/user-attachments/assets/a9017215-4f05-402b-aef0-c6907665c7aa" />
+  <img width="1909" height="908" alt="Screenshot 2025-11-14 153619" src="https://github.com/user-attachments/assets/428593cf-39f8-4147-9446-690aa00c42a3" />
+  <img width="1687" height="880" alt="Screenshot 2025-11-14 153536" src="https://github.com/user-attachments/assets/1579703d-a067-4d13-b0e3-4c33dbb1bad3" />
+</details>
+
+## Tech Stack
 
 ### Frontend
 
 - React 19
-- Redux Toolkit (central state management: auth, cases, chat, judge, documents)
+- Redux Toolkit (auth, cases, chat, judge, documents)
 - React Router v7
 - Tailwind CSS
 - Axios
-- React Virtuoso (virtualized list rendering)
+- React Virtuoso (virtualized rendering)
 - Vite (Rolldown-powered)
 
 ### Backend
@@ -97,9 +100,7 @@ The goal is to simulate a courtroom environment with clarity and discipline — 
 - Redis Cloud or local Redis server
 - Environment variables for secrets
 
----
-
-# How the System Works
+## How the System Works
 
 ### 1. Creating & Joining a Case
 
@@ -109,37 +110,31 @@ The goal is to simulate a courtroom environment with clarity and discipline — 
 
 ### 2. Live Argument Submission
 
-- Each message is stored with:
+- Each message stores:
   - Case ID
   - Side (A/B)
   - Round number
   - Timestamp
-- Frontend only renders messages for the current round
-- Messages update instantly using periodic sync and cached responses
+- Frontend renders messages for the current round only
+- Messages update instantly using periodic sync plus cached responses
 
 ### 3. Document Uploads
 
-- Supports PDF and DOCX
-- Extracts text for AI analysis
-- Stored in MongoDB with cloud scalability
-- Listing uses react-virtuoso for smooth scrolling
+- Supports PDF and DOCX uploads
+- Extracts text for AI analysis; stores metadata in MongoDB
+- Listing uses `react-virtuoso` for smooth scrolling
 
 ### 4. Verdict Generation
 
-- Either participant may request it
-- Gemini processes:
-  - Both sides' arguments
-  - Document contents
-- Produces a final decision in a structured format
-- Verdict is cached to prevent repeated API calls
+- Either participant may request a verdict
+- Gemini processes both sides’ arguments and document contents
+- Produces a structured final decision and caches the result
 
-***
-
-# Project Structure
+## Project Structure
 
 ### Client
 
-``````
+```text
 client/
   public/
   src/
@@ -176,7 +171,7 @@ client/
 
 ### Server
 
-``````
+```text
 server/
   controllers/
     authController.js
@@ -210,70 +205,13 @@ server/
   package.json
 ```
 
-***
+## Environment Variables
 
-# Environment Variables
+Create a .env file in both server/ and client/ before running.
 
-### Client (.env)
+### Server .env
 
-``````
-VITE_GOOGLE_CLIENT_ID=YOUR_CLIENT_ID
-```
-
-### Server (.env)
-
-``````
-MONGO_URI=YOUR_MONGODB_ATLAS_URI
-PORT=5000
-GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID
-JWT_SECRET=YOUR_JWT_SECRET
-GEMINI_API_KEY=YOUR_GEMINI_API_KEY
-REDIS_URL=redis://default:password@host:port
-```
-
-***
-
-# Installation & Setup
-
-### 1. Clone the repository
-
-```sh```
-git clone https://github.com/Mohammedanees06/AI-Courtroom.git
-cd AI-Courtroom
-
-```
-
----
-
-## 2. Environment Variables (Required Before Running)
-
-Create a `.env` file inside both server/ and client/ and add the following values.
-
-Developers must obtain the credentials from the official sources listed below.
-
-### Where to get each key:
-
-- MongoDB Atlas Cluster URI
-  Create a free cluster:
-  https://www.mongodb.com/docs/atlas/getting-started/
-
-- Google OAuth Client ID
-  Create from Google Cloud Console → OAuth 2.0 Credentials:
-  https://developers.google.com/identity/oauth2/web/guides/create-client
-
-- Gemini API Key
-  Generate from Google AI Studio:
-  https://ai.google.dev/gemini-api/docs/api-key
-
-- Redis Cloud URL
-  Create a free Redis instance:
-  https://redis.io/docs/latest/operate/rc/rc-quickstart/
-
-Add them to your `.env` files like this:
-
-### Server `.env`
-
-``````
+```env
 PORT=5000
 MONGO_URI=your_mongodb_uri
 GOOGLE_CLIENT_ID=your_google_client_id
@@ -282,101 +220,86 @@ GEMINI_API_KEY=your_gemini_key
 REDIS_URL=your_redis_cloud_url
 ```
 
-### Client `.env`
+### Client .env
 
-``````
+```env
 VITE_GOOGLE_CLIENT_ID=your_google_client_id
 ```
 
----
+Where to get keys:
+- MongoDB Atlas: create a free cluster and get your connection string
+- Google OAuth Client ID: create OAuth 2.0 credentials in Google Cloud Console
+- Gemini API Key: generate in Google AI Studio
+- Redis Cloud URL: create a free Redis instance (or use local Redis)
 
-## 3. Setup Server
+## Installation & Setup
 
-``````sh
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Mohammedanees06/AI-Courtroom.git
+cd AI-Courtroom
+```
+
+### 2. Configure Environment
+
+Add the above .env files to server/ and client/ using your credentials.
+
+### 3. Setup Server
+
+```bash
 cd server
 npm install
 node server.js
 ```
 
-***
+### 4. Setup Client
 
-## 4. Setup Client
-
-```sh```
+```bash
 cd client
 npm install
 npm run dev
 ```
 
----
-
-# Core Decisions & Optimizations
+## Core Decisions & Optimizations
 
 ### Lazy Loading
 
-Reduces initial bundle size by loading routes only when needed.
+Routes are loaded on demand to reduce initial bundle size and improve first paint.
 
 ### Pagination
 
-Used for case listings to avoid loading large data sets at once.
+Large lists (e.g., cases) are paginated to limit payload and improve responsiveness.
 
 ### Virtualized Rendering
 
-``react-virtuoso` ensures heavy lists (messages, documents) render only what is visible.
+`react-virtuoso` renders only visible items with support for variable sizes and smooth scrolling.
 
 ### Redis Caching
 
-Caches:
-
-- Case data
-- Messages
-- Verdicts
-
-Greatly reduces database load and boosts speed.
+Caches case data, messages, and verdicts to reduce database load and accelerate responses.
 
 ### Redux Toolkit
 
-Manages:
+Centralizes auth, parties/case data, chat messages, verdict state, and documents for predictable state management.
 
-- Authentication state
-- Parties & case data
-- Chat messages
-- Verdict state
-- Document uploads
+## Why This Project Stands Out
 
-Keeps the application predictable and easy to maintain.
-
----
-
-# Why This Project Stands Out
-
-- Courtroom structure with clear discipline
-- AI-assisted judgment
-- Simple Case ID–based joining mechanism
-- Multi-device live sync
-- Scalable, production-ready backend
-- Robust use of caching and modern frontend performance patterns
+- Courtroom structure with clear discipline and round-based argument flow
+- AI-assisted judgment using Gemini for structured verdicts
+- Simple Case ID–based joining mechanism for quick collaboration
+- Multi-device live sync with cached responses for speed
+- Scalable, production-ready backend with MongoDB Atlas and Redis
+- Robust use of virtualization and lazy loading on the frontend
 - Secure authentication with OAuth + JWT
 
----
+## Author
 
-# Author
-
-Mohammed Anees
+Mohammed Anees  
 Full-Stack Developer (MERN & AI)
 
-🌐 Portfolio:
-https://mohammedanees.netlify.app
-
-💼 LinkedIn:
-https://www.linkedin.com/in/mohammedaneesdev
-
-💻 GitHub:
-https://github.com/Mohammedanees06
-
-📧 Email:
-Mohammedanees0606[at]gmail[dot]com
-
-
----
+Portfolio: https://mohammedanees.netlify.app  
+LinkedIn: https://www.linkedin.com/in/mohammedaneesdev  
+GitHub: https://github.com/Mohammedanees06  
+Email: Mohammedanees0606[at]gmail[dot]com
 
